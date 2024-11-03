@@ -1,0 +1,250 @@
+/*
+  Header styles
+*/
+body, html {
+  height: 100%;
+}
+header {
+  z-index: 10;
+  background-color: white;
+  box-shadow: 0px 4px 15px rgba(130, 71, 142, 0.8);
+}
+
+#top-header, #search-container, #header-btns, #search-form, #sign-up-btn, #login-btn {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  font-family: "Oswald", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+#top-header {
+  height: 5rem;
+  width: 90%;
+  justify-content: center;
+}
+
+#logo, button, #shopping-cart {
+  cursor: pointer;
+}
+
+#logo {
+  font-family: "Londrina Shadow", sans-serif;
+  text-align: center;
+  font-size: 36px;
+  padding-right: 16px;
+  width: 20%;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+#search-icon {
+  padding: 4px;
+}
+
+#search-container {
+  justify-content: space-between;
+  border: 1px solid black;
+  border-radius: .2rem;
+}
+
+#header-search {
+  padding: 10px;
+  border: none;
+}
+
+form {
+  padding-right: 0.5rem;
+}
+
+form > button {
+  border: 2px solid rgb(230, 230, 230);
+  background-color: white;
+  text-align: center;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+#header-btns {
+  justify-content: flex-end;
+  gap: 50px;
+  padding: 20px;
+  width: 40%;
+  font-size: 20px;
+}
+
+#login-btn, #sign-up-btn {
+  font-size: 18px;
+  padding: 3px 1em 3px;
+}
+
+#login-btn {
+  background-color: white;
+}
+
+#sign-up-btn {
+  color: white;
+  background-color: black;
+}
+
+#header-btns > p:hover, #header-btns > button:hover {
+  transform: scale(1.01);
+  color: rgb(11, 11, 194);
+}
+
+#shopping-cart:hover {
+  transform: scale(1.1);
+}
+
+.rotate {
+  transform-origin: center;
+  animation: sides 2s linear infinite;
+}
+
+@keyframes sides {
+  0% {
+      transform: translateX(0);
+  }
+  25% {
+      transform: translateX(5px);
+  }
+  50% {
+      transform: translateX(0);
+  }
+  75% {
+      transform: translateX(-5px);
+  }
+  100% {
+      transform: translateX(0);
+  }
+}
+
+#menu {
+  display: flex;
+  position: relative;
+  font-weight: 500;
+  justify-content: center;
+  gap: 200px;
+}
+
+#menu > .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  flex-direction: column;
+  text-align: center;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.402);
+  border-radius: 12px;
+  padding: 1rem;
+  border: 2px solid rgb(66, 114, 202);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  width: 120px;
+
+  a {
+    text-decoration: none;
+    margin: auto;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+  }
+
+  a:hover {
+    color: rgb(58, 65, 71);
+  }
+
+  section {
+    margin: 0.5rem;
+    width: 100%;
+  }
+}
+
+.drop-btn {
+  color: black;
+  font-weight: bold;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.drop-btn:hover {
+  color: rgb(151, 187, 219);
+}
+
+#recs > h1 {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 00;
+  padding: 20px;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  h3 {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0px;
+    text-align: left;
+  }
+}
+
+.mens-recs, .womens-recs, .kids-recs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 50px;
+  /* padding: 20px; */
+  font-size: 20px;
+}
+
+/*
+  Sign Up styles
+*/
+
+#sign-up-page {
+  display: flex;
+  flex-direction: column;
+}
+
+#sign-up-page {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  height: 100%;
+  padding: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+#sign-up-form {
+  justify-content: flex-start;
+  background: white;
+  padding: 20px;
+  gap: 5px;
+  border-radius: 2px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  margin: 2rem auto auto;
+}
+
+.hidden {
+  display: none;
+}
