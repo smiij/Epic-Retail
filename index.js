@@ -6,11 +6,48 @@
   function init() {
     id("logo").addEventListener("click", mainPage);
     id("sign-up-btn").addEventListener("click", toggleSignUp);
+
+    qsa(".filter-header").forEach((header) => {
+      header.addEventListener("click", () => {
+        toggleFilter(header);
+      });
+    });
+
+    id("all-categories-link").addEventListener("click", togglePage);
+
   }
+
+
 
   function mainPage() {
     window.location.href = "index.html";
   }
+
+  // Mens Section
+  function toggleFilter(header) {
+    let filter = header.getAttribute("data-filter");
+    let filterContent = id(filter);
+    if (filterContent) {
+      filterContent.classList.toggle("hidden");
+    }
+  }
+
+  function togglePage() {
+    let mensClothing = id("mens-clothing");
+    let mainPage = id("recs");
+
+    if (mainPage.classList.contains("hidden")) {
+      // If the main page is already hidden, show it and hide men's clothing
+      mainPage.classList.remove("hidden");
+      mensClothing.classList.add("hidden");
+    } else {
+      // If the main page is visible, hide it and show men's clothing
+      mainPage.classList.add("hidden");
+      mensClothing.classList.remove("hidden");
+    }
+  }
+
+
 
   function toggleSignUp() {
     id("sign-up-page").classList.toggle("hidden");
