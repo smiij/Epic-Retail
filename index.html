@@ -15,7 +15,7 @@
   <body>
     <header>
       <section id="top-header">
-        <div id="logo" class="rotate" href="/." >Not-Grailed</div>
+        <div id="logo" class="rotate" href="/." >Epic</div>
         <div id="search-container">
           <span id="search-icon" class="material-symbols-outlined">search</span>
           <form id="search-form">
@@ -183,170 +183,171 @@
               <p>Price</p>
             </div>
           </section>
+      </section>
+
+      <!-- Mens -->
+      <section id="mens-clothing" class="all-categories hidden">
+        <h2>
+          Men's Clothing
+        </h2>
+
+        <div>
+          <h3>Shop Menswear</h3>
+        </div>
+        <section class="mens-recs">
+          <div class="outerwear">
+            <img src="https://via.placeholder.com/150" alt="product">
+            <hr>
+            <p>Product Name</p>
+            <p>Price</p>
+          </div>
+          <div class="tops">
+            <img src="https://via.placeholder.com/150" alt="product">
+            <hr>
+            <p>Product Name</p>
+            <p>Price</p>
+          </div>
+          <div class="bottoms">
+            <img src="https://via.placeholder.com/150" alt="product">
+            <hr>
+            <p>Product Name</p>
+            <p>Price</p>
+          </div>
+          <div class="footwear">
+            <img src="https://via.placeholder.com/150" alt="product">
+            <hr>
+            <p>Product Name</p>
+            <p>Price</p>
+          </div>
+          <div class="accessories">
+            <img src="https://via.placeholder.com/150" alt="product">
+            <hr>
+            <p>Product Name</p>
+            <p>Price</p>
+          </div>
         </section>
 
-        <!-- Mens -->
-          <section id="mens-clothing" class="all-categories hidden">
-            <h2>
-              Men's Clothing
-            </h2>
+        <div class="sort">
+          <select class = "sort-btn">
+            <option value="default">Sort By: Default</option>
+            <option value="tops">Sort By: Price (Low)</option>
+            <option value="bottoms">Sort By: Price (High)</option>
+            <option value="newest">Sort By: Newest</option>
+          </select>
+        </div>
 
-            <div>
-              <h3>Shop Menswear</h3>
-            </div>
-            <section class="mens-recs">
-              <div class="outerwear">
-                <img src="https://via.placeholder.com/150" alt="product">
-                <hr>
-                <p>Product Name</p>
-                <p>Price</p>
-              </div>
-              <div class="tops">
-                <img src="https://via.placeholder.com/150" alt="product">
-                <hr>
-                <p>Product Name</p>
-                <p>Price</p>
-              </div>
-              <div class="bottoms">
-                <img src="https://via.placeholder.com/150" alt="product">
-                <hr>
-                <p>Product Name</p>
-                <p>Price</p>
-              </div>
-              <div class="footwear">
-                <img src="https://via.placeholder.com/150" alt="product">
-                <hr>
-                <p>Product Name</p>
-                <p>Price</p>
-              </div>
-              <div class="accessories">
-                <img src="https://via.placeholder.com/150" alt="product">
-                <hr>
-                <p>Product Name</p>
-                <p>Price</p>
-              </div>
-            </section>
+        <div class="filter-product">
 
-            <div class="sort">
-              <select class = "sort-btn">
-                <option value="default">Sort By: Default</option>
-                <option value="tops">Sort By: Price (Low)</option>
-                <option value="bottoms">Sort By: Price (High)</option>
-                <option value="newest">Sort By: Newest</option>
-              </select>
+          <div class="filter">
+
+            <button class="filter-header" data-filter="categoryFilter" >Category</button>
+            <div class="filter-content hidden" id="categoryFilter">
+              <span>Menswear</span>
+              <label><input type="checkbox" name="category" value="clothing"> Tops</label>
+              <label><input type="checkbox" name="category" value="accessories"> Bottoms</label>
+              <label><input type="checkbox" name="category" value="outerwear"> Outerwear</label>
+              <label><input type="checkbox" name="category" value="footwear"> Footwear</label>
+              <label><input type="checkbox" name="category" value="accessories"> Accessories</label>
             </div>
 
-            <div class="filter-product">
+            <hr>
 
-              <div class="filter">
+            <button class="filter-header" data-filter="sizeFilter" >Size</button>
+            <div class="filter-content hidden" id="sizeFilter">
+              <span>Menswear</span>
+              <label><input type="checkbox" name="category" value="clothing"> Tops</label>
+              <label><input type="checkbox" name="category" value="accessories"> Bottoms</label>
+              <label><input type="checkbox" name="category" value="outerwear"> Outerwear</label>
+              <label><input type="checkbox" name="category" value="footwear"> Footwear</label>
+              <label><input type="checkbox" name="category" value="accessories"> Accessories</label>
+            </div>
+            <hr>
 
-                <button class="filter-header" data-filter="categoryFilter" >Category</button>
-                <div class="filter-content hidden" id="categoryFilter">
-                  <span>Menswear</span>
-                  <label><input type="checkbox" name="category" value="clothing"> Tops</label>
-                  <label><input type="checkbox" name="category" value="accessories"> Bottoms</label>
-                  <label><input type="checkbox" name="category" value="outerwear"> Outerwear</label>
-                  <label><input type="checkbox" name="category" value="footwear"> Footwear</label>
-                  <label><input type="checkbox" name="category" value="accessories"> Accessories</label>
-                </div>
+            <button class="filter-header" data-filter="priceFilter" >Price</button>
+            <div class="filter-content hidden" id="priceFilter">
+              <form>
+                <input type="number" id="min-price" name="min-price" placeholder="$ Minimum" required>
+                <input type="number" id="max-price" name="max-price" placeholder="$ Maximum" required>
+              </form>
+            </div>
 
-                <hr>
-
-                <button class="filter-header" data-filter="sizeFilter" >Size</button>
-                <div class="filter-content hidden" id="sizeFilter">
-                  <span>Menswear</span>
-                  <label><input type="checkbox" name="category" value="clothing"> Tops</label>
-                  <label><input type="checkbox" name="category" value="accessories"> Bottoms</label>
-                  <label><input type="checkbox" name="category" value="outerwear"> Outerwear</label>
-                  <label><input type="checkbox" name="category" value="footwear"> Footwear</label>
-                  <label><input type="checkbox" name="category" value="accessories"> Accessories</label>
-                </div>
-                <hr>
-
-                <button class="filter-header" data-filter="priceFilter" >Price</button>
-                <div class="filter-content hidden" id="priceFilter">
-                  <form>
-                    <input type="number" id="min-price" name="min-price" placeholder="$ Minimum" required>
-                    <input type="number" id="max-price" name="max-price" placeholder="$ Maximum" required>
-                  </form>
-                </div>
-
-                <hr>
-                <div class="filter-keyword">
-                  <label for="keyword">Filter by Keyword:</label>
-                  <div class="keyword">
-                    <input type="text" id="keyword" name="keyword" placeholder="Search by keyword">
-                  </div>
-                </div>
+            <hr>
+            <div class="filter-keyword">
+              <label for="keyword">Filter by Keyword:</label>
+              <div class="keyword">
+                <input type="text" id="keyword" name="keyword" placeholder="Search by keyword">
               </div>
+            </div>
+          </div>
+        </div>
 
-              <section class="menswear">
-                <div class="product">
-                  <img src="https://via.placeholder.com/150" alt="product">
-                  <hr>
-                  <p>Product Name</p>
-                  <p>Price</p>
-                </div>
-                <div class="product">
-                  <img src="https://via.placeholder.com/150" alt="product">
-                  <hr>
-                  <p>Product Name</p>
-                  <p>Price</p>
-                </div>
-                <div class="product">
-                  <img src="https://via.placeholder.com/150" alt="product">
-                  <hr>
-                  <p>Product Name</p>
-                  <p>Price</p>
-                </div>
-                <div class="product">
-                  <img src="https://via.placeholder.com/150" alt="product">
-                  <hr>
-                  <p>Product Name</p>
-                  <p>Price</p>
-                </div>
-                <div class="product">
-                  <img src="https://via.placeholder.com/150" alt="product">
-                  <hr>
-                  <p>Product Name</p>
-                  <p>Price</p>
-                </div>
-                <div class="product">
-                  <img src="https://via.placeholder.com/150" alt="product">
-                  <hr>
-                  <p>Product Name</p>
-                  <p>Price</p>
-                </div>
+          <section class="menswear">
+            <div class="product">
+              <img src="https://via.placeholder.com/150" alt="product">
+              <hr>
+              <p>Product Name</p>
+              <p>Price</p>
+            </div>
+            <div class="product">
+              <img src="https://via.placeholder.com/150" alt="product">
+              <hr>
+              <p>Product Name</p>
+              <p>Price</p>
+            </div>
+            <div class="product">
+              <img src="https://via.placeholder.com/150" alt="product">
+              <hr>
+              <p>Product Name</p>
+              <p>Price</p>
+            </div>
+            <div class="product">
+              <img src="https://via.placeholder.com/150" alt="product">
+              <hr>
+              <p>Product Name</p>
+              <p>Price</p>
+            </div>
+            <div class="product">
+              <img src="https://via.placeholder.com/150" alt="product">
+              <hr>
+              <p>Product Name</p>
+              <p>Price</p>
+            </div>
+            <div class="product">
+              <img src="https://via.placeholder.com/150" alt="product">
+              <hr>
+              <p>Product Name</p>
+              <p>Price</p>
+            </div>
 
-                <div class="product">
-                  <img src="https://via.placeholder.com/150" alt="product">
-                  <hr>
-                  <p>Product Name</p>
-                  <p>Price</p>
-                </div>
+            <div class="product">
+              <img src="https://via.placeholder.com/150" alt="product">
+              <hr>
+              <p>Product Name</p>
+              <p>Price</p>
+            </div>
 
-                <div class="product">
-                  <img src="https://via.placeholder.com/150" alt="product">
-                  <hr>
-                  <p>Product Name</p>
-                  <p>Price</p>
-                </div>
+            <div class="product">
+              <img src="https://via.placeholder.com/150" alt="product">
+              <hr>
+              <p>Product Name</p>
+              <p>Price</p>
+            </div>
 
-                <div class="product">
-                  <img src="https://via.placeholder.com/150" alt="product">
-                  <hr>
-                  <p>Product Name</p>
-                  <p>Price</p>
-                </div>
+            <div class="product">
+              <img src="https://via.placeholder.com/150" alt="product">
+              <hr>
+              <p>Product Name</p>
+              <p>Price</p>
+            </div>
 
-                <div class="product">
-                  <img src="https://via.placeholder.com/150" alt="product">
-                  <hr>
-                  <p>Product Name</p>
-                  <p>Price</p>
-                </div>
-              </section>
+            <div class="product">
+              <img src="https://via.placeholder.com/150" alt="product">
+              <hr>
+              <p>Product Name</p>
+              <p>Price</p>
+            </div>
           </section>
+      </section>
 
           <!-- Womens -->
           <section id="womens-clothing" class="all-categories hidden">
@@ -674,11 +675,11 @@
               </section>
           </section>
       
-      <div id="sign-up-page" class="hidden">
+      <div id="sign-up-page" class="sign-up-page hidden">
         <h2>Sign Up</h2>
-        <form id="sign-up-form">
-          <label for="name">Full Name:</label>
-          <input type="text" id="name" name="name" required>
+        <form class="sign-up-form">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required>
     
           <label for="email">Email:</label>
           <input type="email" id="email" name="email" required>
@@ -689,10 +690,20 @@
           <input type="submit" value="Sign Up">
         </form>
       </div>
-      
-      <div id="login-page" class="hidden">
-
+  
+      <div id="login-page" class="sign-up-page hidden">
+        <h2>Login</h2>
+        <form class="sign-up-form">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required>
+    
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+    
+          <input type="submit" value="Login">
+        </form>
       </div>
+      
       <div id="cart-page" class="hidden">
 
       </div>

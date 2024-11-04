@@ -5,7 +5,8 @@
 
   function init() {
     id("logo").addEventListener("click", mainPage);
-    id("sign-up-btn").addEventListener("click", toggleSignUp);
+    id("sign-up-btn").addEventListener("click", visitSignUp);
+    id("login-btn").addEventListener("click", visitLogin);
 
     qsa(".filter-header").forEach((header) => {
       header.addEventListener("click", () => {
@@ -16,8 +17,6 @@
     id("all-categories-link").addEventListener("click", togglePage);
 
   }
-
-
 
   function mainPage() {
     window.location.href = "index.html";
@@ -49,13 +48,25 @@
 
 
 
-  function toggleSignUp() {
-    id("sign-up-page").classList.toggle("hidden");
+  function hideAll() {
+    const main = [...qs("main").children];
+    main.forEach(tag => tag.classList.add("hidden"));
+  }
+
+  function visitSignUp() {
+    hideAll();
+    id("sign-up-page").classList.remove("hidden");
+  }
+
+  function visitLogin() {
+    hideAll();
+    id("login-page").classList.remove("hidden");
   }
 
 
 
 
+  /** Helper Functions */
 
   /**
    * Provides a message to the user when something goes wrong with a request.
