@@ -1,3 +1,10 @@
+/*
+  Names: Andy Prempeh and Javier Tomas
+  Date: October 30, 2024
+  Section: AF
+  This is index.js file that will contain all button functionality page loads.
+*/
+
 "use strict";
 (function() {
 
