@@ -171,7 +171,7 @@ the required fields then returns the created items details.
 ```
 
 **Error Handling:**
-*Fill in an example of the error handling*
+If the user does not enter in required information an error is returned that tells them to fill in all required fields.
 
 ## *Endpoint: http://localhost:8000/buy*
 **Request Format:** 
@@ -229,7 +229,14 @@ the required fields then returns the created items details.
 ```
 
 **Error Handling:**
-*Fill in an example of the error handling*
+400 Bad Request: For invalid input data or parameter combinations
+401 Unauthorized: For authentication failures
+403 Forbidden: For authorization issues
+404 Not Found: When the requested item is not available
+409 Conflict: For inventory conflicts (e.g., item out of stock)
+422 Unprocessable Entity: For payment processing failures
+429 Too Many Requests: For rate limiting issues
+500 Internal Server Error: For unexpected server-side errors
 
 ## *Endpoint: http://localhost:8000/search*
 **Request Format:** search?{query}
