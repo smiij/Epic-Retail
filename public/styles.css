@@ -13,7 +13,7 @@ header {
   box-shadow: 0px 4px 15px rgba(130, 71, 142, 0.8);
 }
 
-#top-header, #search-container, #header-btns, #search-form, #sign-up-btn, #login-btn {
+.top-header, .search-container, #header-btns, .search-form, #sign-up-btn, #login-btn {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
@@ -22,7 +22,7 @@ header {
   font-style: normal;
 }
 
-#top-header {
+.top-header {
   height: 5rem;
   width: 90%;
   justify-content: center;
@@ -52,13 +52,13 @@ header {
   padding: 4px;
 }
 
-#search-container {
+.search-container {
   justify-content: space-between;
   border: 1px solid black;
   border-radius: .2rem;
 }
 
-#header-search {
+.header-search {
   padding: 10px;
   border: none;
 }
@@ -313,6 +313,42 @@ form > button {
   margin: 2rem auto auto;
 }
 
+#api-message, #message {
+  position: fixed;
+  bottom: -99px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #007bff;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  font-size: 1.4em;
+  opacity: 0.5;
+  transition: opacity 0.5s ease;
+  z-index: 1000;
+}
+
+@keyframes slideUp {
+  from {
+    bottom: -100px;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 50%;
+    opacity: 1;
+  }
+}
+
+.show {
+  animation: slideUp 1s ease forwards;
+}
+
 .hidden {
   display: none;
+}
+
+.invisible {
+  visibility: hidden;
 }

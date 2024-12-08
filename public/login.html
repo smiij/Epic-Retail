@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Epic Retail</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=searchshopping_cart" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Londrina+Shadow&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="index.js"></script>
+  </head>
+<body>
+  <header>
+    <section id="top-header" class="top-header">
+      <div id="logo" class="rotate" href="/." >Epic</div>
+      <div id="search-container" class="search-container invisible">
+        <span id="search-icon" class="material-symbols-outlined icon">search</span>
+        <form id="search-form" class="search-form">
+          <input id="header-search" type="search" placeholder="Search" name="query">
+          <button title="search" type="search">Search</button>
+        </form>
+      </div>
+      <section id="header-btns">
+        <span id="shopping-cart" class="material-symbols-outlined">shopping_cart</span>
+        <button id="login-btn">Login</button>
+        <button id="sign-up-btn">Sign Up</button>
+      </section>
+    </section>
+    <hr>
+  </header>
+  <main>
+    <div class="sign-up-page">
+      <h2>Login</h2>
+      <form class="sign-up-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <input type="submit" value="Login">
+      </form>
+    </div>
+    <div id="message" class="hidden"></div>
+    <div id="error-page" class="hidden">
+      <h1>Sorry an error has occurred!</h1>
+      <h2>Please try again.</h2>
+    </div>
+  </main>
+</body>
+</html>
