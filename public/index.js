@@ -17,19 +17,37 @@
     id("logo").addEventListener("click", visitMainPage);
     id("sign-up-btn").addEventListener("click", visitSignUp);
     id("login-btn").addEventListener("click", visitLogin);
-    id("sign-up-form").addEventListener("submit", processSignupRequest);
+    addOptionalListeners();
 
+    if (window.location.pathname.includes("index.html")) {
+      isSignedIn();
+    }
     qsa(".filter-header").forEach((header) => {
       header.addEventListener("click", () => {
         toggleFilter(header);
       });
     });
 
-    // id("all-categories-link").addEventListener("click", togglePage);
+    // id("all-mens").addEventListener("click", loadMens);
+
   }
 
-  function visitMainPage() {
-    window.location.href = "index.html";
+  function addOptionalListeners() {
+    if (id("signout-btn")) {
+      id("signout-btn").addEventListener("click", signout);
+    }
+    if (id("sign-up-form")) {
+      id("sign-up-form").addEventListener("submit", processSignupRequest);
+    }
+    if (id("login-form")) {
+      id("login-form").addEventListener("submit", processLoginRequest);
+    }
+    if (id("all-mens")) {
+      id("all-mens").addEventListener("click", loadMens);
+    }
+    if (id("all-women")) {
+      // id("all-womens").addEventListener("click", loadWomens);
+    }
   }
 
   // Mens Section
@@ -41,23 +59,42 @@
     }
   }
 
-  function togglePage() {
-    let mensClothing = id("mens-clothing");
-    let mainPage = id("recs");
-
-    if (mainPage.classList.contains("hidden")) {
-      // If the main page is already hidden, show it and hide men's clothing
-      mainPage.classList.remove("hidden");
-      mensClothing.classList.add("hidden");
-    } else {
-      // If the main page is visible, hide it and show men's clothing
-      mainPage.classList.add("hidden");
-      mensClothing.classList.remove("hidden");
+  async function loadMens() {
+    let feed = id("feed");
+    try {
+      const response = await fetch("/mens/all");
+      statusCheck(response);
+      const data = response.json();
+      data.forEach((product) => {
+        feed.appendChild(createFeed(product));
+      });
+    } catch (err) {
+      handleError(err);
     }
+
+    let mens = id("mens-clothing");
+    let main = id("recs");
+    main.classList.add("hidden");
+    mens.classList.remove("hidden");
   }
 
-  function visitSignUp() {
-    window.location.href = "sign-up.html";
+  function createFeed(product) {
+
+    let itemSection = gen("section");
+    itemSection.classList.add("product");
+    let itemImg = gen("img");
+    let space = gen("hr");
+    let itemName = gen("p");
+    let itemPrice = gen("p");
+    let size = gen("p");
+    itemName.textContent = product.name;
+    itemPrice.textContent = "$" + product.price;
+    itemImg.src = product.img;
+    size.textContent = product.size;
+
+    itemSection.appendChild(itemImg, space, itemName, itemPrice, size);
+
+    return itemSection;
   }
 
   async function processSignupRequest(event) {
@@ -75,11 +112,61 @@
       form.append("passcode", passcode);
       await fetch("/signup", {method: "POST", body: form})
         .then(statusCheck)
-        .then(res => res.text())
+        .then(res => res.json())
         .then(showMessage);
     } catch (error) {
       handleError(error);
     }
+  }
+
+  async function processLoginRequest(event) {
+    try {
+      event.preventDefault();
+      const username = event.target.username.value;
+      const passcode = event.target.password.value;
+      event.target.username.value = "";
+      event.target.password.value = "";
+      const form = new FormData();
+      form.append("username", username);
+      form.append("passcode", passcode);
+      await fetch(`/login?username=${username}&passcode=${passcode}`)
+        .then(statusCheck)
+        .then(res => res.json())
+        .then(showMessage);
+    } catch (error) {
+      handleError(error);
+    }
+  }
+
+  function isSignedIn() {
+    if (window.localStorage.getItem("signedIn")) {
+      id("username").textContent = window.localStorage.getItem("username");
+      toggleSignedIn();
+    }
+  }
+
+  function signout() {
+    id("username").textContent = "";
+    toggleSignedIn();
+    window.localStorage.removeItem("signedIn");
+    window.localStorage.removeItem("username");
+  }
+
+  // togglePages
+
+  function toggleSignedIn() {
+    id("header-btns").classList.toggle("hidden");
+    id("user-info").classList.toggle("hidden");
+  }
+
+  // visitor pages
+
+  function visitMainPage() {
+    window.location.href = "index.html";
+  }
+
+  function visitSignUp() {
+    window.location.href = "sign-up.html";
   }
 
   function visitLogin() {
@@ -93,7 +180,7 @@
    * Directs user back to the main page.
    */
   function handleError(error) {
-    showMessage("Sorry an error has occured: " + error);
+    showMessage(error);
     setTimeout(() => {
       visitMainPage();
     }, LONG_WAIT);
@@ -101,21 +188,34 @@
 
   /**
    * Helper function used to display helpful information to the user.
-   * @param {String} message message to display.
+   * @param {String} response message to display.
    */
-  function showMessage(message) {
+  function showMessage(response) {
     const messageDiv = id("message");
-    messageDiv.textContent = message;
+    messageDiv.textContent = response.message;
     messageDiv.classList.toggle("hidden");
     messageDiv.classList.toggle("show");
-    id("sign-up-page").classList.add("hidden");
+    togglePage();
     setTimeout(() => {
-      id("sign-up-page").classList.remove("hidden");
+      togglePage();
       messageDiv.classList.toggle("show");
       messageDiv.classList.toggle("hidden");
       messageDiv.textContent = "";
+      if (response.username) {
+        window.localStorage.setItem("signedIn", true);
+        window.localStorage.setItem("username", response.username);
+      }
       visitMainPage();
     }, LONG_WAIT);
+  }
+
+  function togglePage() {
+    if (id("sign-up-page")) {
+      id("sign-up-page").classList.toggle("hidden");
+    }
+    if (id("login-page")) {
+      id("login-page").classList.toggle("hidden");
+    }
   }
 
   /**

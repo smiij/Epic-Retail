@@ -22,7 +22,7 @@ const SERVER_ERROR = 500;
 
 app.post("/signup", async function(request, response) {
   let db;
-  response.type("plain text");
+  response.type("application/json");
   try {
     const username = request.body.username;
     const email = request.body.email;
@@ -34,26 +34,61 @@ app.post("/signup", async function(request, response) {
         const createUser = "INSERT INTO users (username, passcode) VALUES (?, ?);";
         await db.run(query, [username, email, passcode]);
         await db.run(createUser, [username, passcode]);
-        response.send("successfully created account.");
+        response.send({
+          message: "Successfully created an account.",
+          username: username
+        });
       } else {
-        response.status(CLIENT_ERROR).send("Account already exists. Please sign in.");
+        response.status(CLIENT_ERROR).send({message: "Account already exists. Please sign in."});
       }
     } else {
-      response.status(CLIENT_ERROR).send("One or more invalid inputs");
+      response.status(CLIENT_ERROR).send({message: "One or more invalid inputs."});
     }
   } catch (error) {
-    response.status(SERVER_ERROR).send("An error occured on the server. Please try again later.");
+    response.status(SERVER_ERROR).send({message: "An error occured on the server. Try again."});
   } finally {
     closeDB(db);
   }
 });
 
-app.get("/login", function(request, response) {
+app.get("/login", async function(request, response) {
   let db;
+  response.type("application/json");
   try {
+    const username = request.query.username;
+    const passcode = request.query.passcode;
+    console.log(username);
+    if (checkInput(username, passcode)) {
+      console.log(username);
+      db = await getDBConnection();
+      if (await checkLogin(username, passcode)) {
+        console.log(username);
+        response.send({
+          message: "Successfully signed in.",
+          username: username
+        });
+      } else {
+        response.status(CLIENT_ERROR).send({message: "Invalid username and password."});
+      }
+    } else {
+      response.status(CLIENT_ERROR).send({message: "One or more invalid inputs."});
+    }
   } catch (error) {
+    response.status(SERVER_ERROR).send({message: "An error occured on the server. Try again."});
   } finally {
     closeDB(db);
+  }
+});
+
+app.get("/mens/all", async function(request, response) {
+  const db = await getDBConnection();
+  try {
+    const query = "SELECT * FROM items";
+    const products = await db.all(query);
+    console.log(products);
+    response.json(products);
+  } catch (error) {
+    response.status(SERVER_ERROR).send({message: "An error occured on the server."});
   }
 });
 
@@ -74,11 +109,9 @@ async function checkCreate(db, username) {
 
 async function checkLogin(db, username, passcode) {
   const testQuery = "SELECT * FROM users WHERE username = ? AND passcode = ?;";
-  const exists = await db.get(testQuery, username, passcode);
-  if (exists) {
-    return true;
-  }
-  return false;
+  const exists = await db.run(testQuery, [username, passcode]);
+  console.log(exists);
+  return exists !== undefined;
 }
 
 /**

@@ -20,7 +20,7 @@
           <button title="search" type="search">Search</button>
         </form>
       </div>
-      <section id="header-btns">
+      <section id="header-btns" class="header-btns">
         <span id="shopping-cart" class="material-symbols-outlined">shopping_cart</span>
         <button id="login-btn">Login</button>
         <button id="sign-up-btn">Sign Up</button>
@@ -29,9 +29,9 @@
     <hr>
   </header>
   <main>
-    <div class="sign-up-page">
+    <div id="login-page" class="sign-up-page">
       <h2>Login</h2>
-      <form class="sign-up-form">
+      <form id="login-form" class="sign-up-form">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
         <br>
@@ -41,10 +41,6 @@
       </form>
     </div>
     <div id="message" class="hidden"></div>
-    <div id="error-page" class="hidden">
-      <h1>Sorry an error has occurred!</h1>
-      <h2>Please try again.</h2>
-    </div>
   </main>
 </body>
 </html>

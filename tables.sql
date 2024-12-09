@@ -8,3 +8,13 @@ CREATE TABLE users (
   username VARCHAR(64),
   passcode VARCHAR(64)
 );
+
+CREATE TABLE items (
+  id iNT PRIMARY KEY,
+  name VARCHAR(64),
+  description TEXT,
+  price DECIMAL(10, 2),
+  image_url TEXT
+  type TEXT
+  size TEXT
+);
