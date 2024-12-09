@@ -17,7 +17,7 @@
     id("logo").addEventListener("click", visitMainPage);
     id("sign-up-btn").addEventListener("click", visitSignUp);
     id("login-btn").addEventListener("click", visitLogin);
-    id("shopping-cart").addEventListener("click", visitCart);
+    qs(".cart").addEventListener("click", visitCart);
     addOptionalListeners();
 
     if (window.location.pathname.includes("index.html")) {
