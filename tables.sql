@@ -13,8 +13,9 @@ CREATE TABLE items (
   id INT PRIMARY KEY,
   name VARCHAR(64),
   description TEXT,
-  price DECIMAL(10, 2),
-  image_url TEXT
-  type TEXT
-  size TEXT
+  price DECIMAL(8, 2),
+  image_url TEXT,
+  type TEXT,
+  size TEXT,
+  count INT
 );

@@ -26,8 +26,6 @@
       });
     });
 
-    // id("all-mens").addEventListener("click", loadMens);
-
   }
 
   function addOptionalListeners() {
@@ -65,7 +63,8 @@
     try {
       const response = await fetch("/mens/all");
       statusCheck(response);
-      const data = response.json();
+      let data = await response.json();
+      console.log(data);
       data.forEach((product) => {
         feed.appendChild(createFeed(product));
       });
@@ -90,10 +89,14 @@
     let size = gen("p");
     itemName.textContent = product.name;
     itemPrice.textContent = "$" + product.price;
-    itemImg.src = product.img;
+    itemImg.src = product.image_url;
+    itemImg.alt = product.name + " " + product.type;
     size.textContent = product.size;
 
-    itemSection.appendChild(itemImg, space, itemName, itemPrice, size);
+    [itemImg, space, itemName, itemPrice, size].forEach((element) => {
+      itemSection.appendChild(element);
+    });
+    console.log(itemSection);
 
     return itemSection;
   }

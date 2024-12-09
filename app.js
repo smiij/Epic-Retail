@@ -80,7 +80,7 @@ app.get("/login", async function(request, response) {
 app.get("/mens/all", async function(request, response) {
   const db = await getDBConnection();
   try {
-    const query = "SELECT * FROM items";
+    const query = "SELECT * FROM items WHERE type = 'mens';";
     const products = await db.all(query);
     console.log(products);
     response.json(products);
