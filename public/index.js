@@ -17,6 +17,7 @@
     id("logo").addEventListener("click", visitMainPage);
     id("sign-up-btn").addEventListener("click", visitSignUp);
     id("login-btn").addEventListener("click", visitLogin);
+    id("shopping-cart").addEventListener("click", visitCart);
     addOptionalListeners();
 
     if (window.location.pathname.includes("index.html")) {
@@ -171,6 +172,10 @@
 
   function visitLogin() {
     window.location.href = "login.html";
+  }
+
+  function visitCart() {
+    window.location.href = "cart.html";
   }
 
   /** Helper Functions */

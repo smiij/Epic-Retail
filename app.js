@@ -57,12 +57,9 @@ app.get("/login", async function(request, response) {
   try {
     const username = request.query.username;
     const passcode = request.query.passcode;
-    console.log(username);
     if (checkInput(username, passcode)) {
-      console.log(username);
       db = await getDBConnection();
-      if (await checkLogin(username, passcode)) {
-        console.log(username);
+      if (await checkLogin(db, username, passcode)) {
         response.send({
           message: "Successfully signed in.",
           username: username
@@ -110,7 +107,6 @@ async function checkCreate(db, username) {
 async function checkLogin(db, username, passcode) {
   const testQuery = "SELECT * FROM users WHERE username = ? AND passcode = ?;";
   const exists = await db.run(testQuery, [username, passcode]);
-  console.log(exists);
   return exists !== undefined;
 }
 

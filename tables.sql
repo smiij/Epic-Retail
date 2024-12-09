@@ -10,7 +10,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE items (
-  id iNT PRIMARY KEY,
+  id INT PRIMARY KEY,
   name VARCHAR(64),
   description TEXT,
   price DECIMAL(10, 2),
