@@ -46,7 +46,7 @@ header {
     'FILL' 0,
     'wght' 400,
     'GRAD' 0,
-    'opsz' 24
+    'opsz' 24;
 }
 
 #search-icon {
@@ -320,6 +320,10 @@ form > button {
   margin: 2rem auto auto;
 }
 
+/*
+  messages styles
+*/
+
 #api-message, #message {
   position: fixed;
   bottom: -99px;
@@ -351,6 +355,10 @@ form > button {
 .show {
   animation: slideUp 1s ease forwards;
 }
+
+/*
+  cart styles
+*/
 
 .hidden {
   display: none;

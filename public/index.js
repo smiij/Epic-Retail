@@ -17,12 +17,9 @@
     id("logo").addEventListener("click", visitMainPage);
     id("sign-up-btn").addEventListener("click", visitSignUp);
     id("login-btn").addEventListener("click", visitLogin);
-    qs(".cart").addEventListener("click", visitCart);
     addOptionalListeners();
+    isSignedIn();
 
-    if (window.location.pathname.includes("index.html")) {
-      isSignedIn();
-    }
     qsa(".filter-header").forEach((header) => {
       header.addEventListener("click", () => {
         toggleFilter(header);
@@ -49,6 +46,9 @@
     if (id("all-women")) {
       // id("all-womens").addEventListener("click", loadWomens);
     }
+    [...qsa(".cart")].forEach(tag => {
+      tag.addEventListener("click", visitCart);
+    });
   }
 
   // Mens Section
@@ -142,22 +142,17 @@
   function isSignedIn() {
     if (window.localStorage.getItem("signedIn")) {
       id("username").textContent = window.localStorage.getItem("username");
-      toggleSignedIn();
+      id("header-btns").classList.add("hidden");
+      id("user-info").classList.remove("hidden");
     }
   }
 
   function signout() {
     id("username").textContent = "";
-    toggleSignedIn();
+    id("header-btns").classList.remove("hidden");
+    id("user-info").classList.add("hidden");
     window.localStorage.removeItem("signedIn");
     window.localStorage.removeItem("username");
-  }
-
-  // togglePages
-
-  function toggleSignedIn() {
-    id("header-btns").classList.toggle("hidden");
-    id("user-info").classList.toggle("hidden");
   }
 
   // visitor pages

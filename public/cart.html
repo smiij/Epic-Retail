@@ -25,12 +25,19 @@
           <button id="login-btn">Login</button>
           <button id="sign-up-btn">Sign Up</button>
         </section>
+        <div id="user-info" class="user-info hidden">
+          <span class="material-symbols-outlined cart">shopping_cart</span>
+          <span id="username"></span>
+          <button id="signout-btn">Sign Out</button>
+        </div>
       </section>
       <hr>
     </header>
     <main>
       <div id="cart-display" class="sign-up-page">
         <h2>Shopping Cart</h2>
+        <div class="cart-items"></div>
+        <div class="price-total"></div>
       </div>
       <div id="message" class="hidden"></div>
     </main>
