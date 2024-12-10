@@ -30,7 +30,7 @@
 
   function addOptionalListeners() {
     if (id("signout-btn")) {
-      id("signout-btn").addEventListener("click", signout);
+      id("signout-btn").addEventListener("click", processSignout);
     }
     if (id("sign-up-form")) {
       id("sign-up-form").addEventListener("submit", processSignupRequest);
@@ -41,6 +41,7 @@
     if (id("all-mens")) {
       id("all-mens").addEventListener("click", loadMens);
     }
+
     if (id("all-women")) {
       // id("all-womens").addEventListener("click", loadWomens);
     }
@@ -64,7 +65,6 @@
       const response = await fetch("/mens/all");
       statusCheck(response);
       let data = await response.json();
-      console.log(data);
       data.forEach((product) => {
         feed.appendChild(createFeed(product));
       });
@@ -76,29 +76,85 @@
     let main = id("recs");
     main.classList.add("hidden");
     mens.classList.remove("hidden");
+    [...qsa(".add-to-cart")].forEach(button => {
+      button.addEventListener("click", addToCart);
+    });
   }
 
   function createFeed(product) {
-
     let itemSection = gen("section");
     itemSection.classList.add("product");
+    itemSection.addEventListener("click", detailedView(product));
+    let itemLink = gen("a");
+    itemLink.href = "";
+    itemLink.setAttribute("target", "_blank");
     let itemImg = gen("img");
     let space = gen("hr");
     let itemName = gen("p");
+
+    let itemPriceSec = gen("section");
+    itemPriceSec.classList.add("price");
     let itemPrice = gen("p");
+    itemPriceSec.appendChild(itemPrice);
+
+    let sizeSection = gen("section");
     let size = gen("p");
+    sizeSection.appendChild(size);
+
     itemName.textContent = product.name;
     itemPrice.textContent = "$" + product.price;
     itemImg.src = product.image_url;
     itemImg.alt = product.name + " " + product.type;
     size.textContent = product.size;
 
-    [itemImg, space, itemName, itemPrice, size].forEach((element) => {
+    [itemImg, space, itemName].forEach((element) => {
+      itemLink.appendChild(element);
+    });
+
+    [itemLink, itemPriceSec, sizeSection].forEach((element) => {
       itemSection.appendChild(element);
     });
-    console.log(itemSection);
 
     return itemSection;
+  }
+
+  // Detailed View Page
+  function detailedView(product) {
+    let main = id("recs");
+    let view = id("detailView");
+
+    let mainSection = gen("section");
+    let mainLeft = gen("section");
+
+    let img = gen("img");
+    let mainContentRight = gen("section");
+    let buy = gen("button");
+    buy.textContent = "Add to Cart";
+    buy.classList.add("add-to-cart");
+    let name = gen("h2");
+    let price = gen("h3");
+    let size = gen("p");
+    size.textContent = "Size: " + product.size;
+    price.textContent = "$" + product.price;
+    name.textContent = product.name;
+    img.src = product.image_url;
+    img.alt = product.name + " " + product.type;
+
+    mainLeft.appendChild(img);
+    [name, price, buy, size].forEach((element) => {
+      mainContentRight.appendChild(element);
+    });
+    mainSection.appendChild(mainLeft);
+    mainSection.appendChild(mainContentRight);
+    view.appendChild(mainSection);
+
+    main.classList.add("hidden");
+    view.classList.remove("hidden");
+  }
+
+  function addToCart() {
+    const parentNode = this.parentNode;
+    console.log(this.parentNode);
   }
 
   async function processSignupRequest(event) {
@@ -150,12 +206,24 @@
     }
   }
 
-  function signout() {
-    id("username").textContent = "";
-    id("header-btns").classList.remove("hidden");
-    id("user-info").classList.add("hidden");
-    window.localStorage.removeItem("signedIn");
-    window.localStorage.removeItem("username");
+  async function processSignout() {
+    try {
+      id("username").textContent = "";
+      id("header-btns").classList.remove("hidden");
+      id("user-info").classList.add("hidden");
+      const form = new FormData();
+      form.append("username", window.localStorage.getItem("username"));
+      form.append("cart", window.localStorage.getItem("cart"));
+      window.localStorage.removeItem("signedIn");
+      window.localStorage.removeItem("username");
+      window.localStorage.removeItem("cart");
+      await fetch("/signout", {method: "POST", body: form})
+        .then(statusCheck)
+        .then(res => res.json())
+        .then(showMessage);
+    } catch (error) {
+      handleError(error);
+    }
   }
 
   // visitor pages
@@ -207,6 +275,7 @@
       if (response.username) {
         window.localStorage.setItem("signedIn", true);
         window.localStorage.setItem("username", response.username);
+        window.localStorage.setItem("cart", JSON.parse(response.cart));
       }
       visitMainPage();
     }, LONG_WAIT);

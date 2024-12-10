@@ -34,11 +34,44 @@
       <hr>
     </header>
     <main>
-      <div id="cart-display" class="sign-up-page">
-        <h2>Shopping Cart</h2>
-        <div class="cart-items"></div>
-        <div class="price-total"></div>
-      </div>
+      <section class="cart-items">
+        <div class="cart-item">
+            <img src="https://via.placeholder.com/80" alt="Product">
+            <div class="details">
+                <h4>Product Name</h4>
+                <p class="price"></p>
+            </div>
+            <div class="quantity">
+                <button>-</button>
+                <span>1</span>
+                <button>+</button>
+            </div>
+            <span class="remove">Remove</span>
+        </div>
+        <div class="cart-item">
+            <img src="https://via.placeholder.com/80" alt="Product">
+            <div class="details">
+                <h4>Product Name</h4>
+                <p class="price">100</p>
+            </div>
+            <div class="quantity">
+                <button>-</button>
+                <span>2</span>
+                <button>+</button>
+            </div>
+            <span class="remove">Remove</span>
+        </div>
+      </section>
+      <aside class="summary">
+        <h3>Order Summary</h3>
+        <p>Subtotal: <p id="subtotal-price"></p></p>
+        <p>Tax: <p id="tax"></p></p>
+        <div class="total">
+            <span>Total:</span>
+            <span id="total-cost"></span>
+        </div>
+        <a href="#" class="checkout-btn">Proceed to Checkout</a>
+      </aside>
       <div id="message" class="hidden"></div>
     </main>
   </body>
