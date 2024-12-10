@@ -148,7 +148,7 @@ form > button {
   display: inline-block;
 }
 
-.dropdown:hover .dropdown-content, .dropdown:hover .dropdown-content-w{
+.dropdown:hover .dropdown-content, .dropdown:hover .dropdown-content-w {
   display: flex;
 }
 
@@ -325,6 +325,7 @@ a {
     flex-direction: column;
     gap: 5px;
   }
+
   button {
     display: inline-block;
     margin-top: 10px;

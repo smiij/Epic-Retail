@@ -123,8 +123,8 @@
 
   /**
    * Returns a random item from an array.
-   * @param {Array} array - The array to pick a random item from.
-   * @returns {*} - A random item from the array.
+   * @param {Array} data - The array to pick a random item from.
+   * @returns {object} - A random item from the array.
    */
   function getRandomItem(data) {
     const randInd = Math.floor(Math.random() * data.length);
@@ -337,7 +337,7 @@
 
   /**
    * Helper function used to check if an item is currently in the user's cart.
-   * @param {String} productName
+   * @param {String} productName name of product.
    * @returns {boolean} returns whether item is in user's cart.
    */
   function itemIsInCart(productName) {
@@ -353,7 +353,7 @@
   /**
    * Helper function used to add an additional quantity of item if product is already
    * in the user's cart.
-   * @param {String} productName
+   * @param {String} productName name of produce.
    */
   function addAdditional(productName) {
     const cart = getCart();
@@ -674,6 +674,7 @@
   /**
    * Provides a message to the user when something goes wrong with a request.
    * Directs user back to the main page.
+   * @param {Error} error error message.
    */
   function handleError(error) {
     showMessage(error);
