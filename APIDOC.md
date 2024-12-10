@@ -1,9 +1,9 @@
 # EPIC Retail API Documentation
-This API allows us to access and interact with a marketplace for curated items. Allows the web application the ability to brose, buy sell and manage items.
+This API allows us to access and interact with a marketplace for curated items. Allows the web application the ability to browse, buy sell and manage items.
 
-## *Endpoint: http://localhost:8000/signin*
+## *Endpoint: /login*
 
-**Request Format:** signin?username={username}&password={password}
+**Request Format:** login?username={username}&passcode={passcode}
 
 **Request Type:**: GET
 
@@ -11,23 +11,24 @@ This API allows us to access and interact with a marketplace for curated items. 
 
 **Description:** This endpoint is used for when a user tries to login into their account. The user will provide their username and password onto a front end Form which will then be directed to this endpoint. If the user's credentials match, they will be logged into their account.
 
-**Example Request:** *http://localhost:8000/signin?username=janedoe&password=simplepw*
+**Example Request:** *http://localhost:8000/login?username=janedoe&password=simplepw*
 
 **Example Response:**
 ```
 {
-  success: true,
-  username: janedoe,
   message: Successfully logged in.
+  username: janedoe,
+  cart: []
 }
 ```
 
 **Error Handling:**
 If a user fails to loggin successfully, a helpful message will display saying "username and password do not match. Please try again."
+Error 400: Bad Request
 
 
-## *Endpoint: http://localhost:8000/register*
-**Request Format:** register?username={username}&password={password}&email={email}&phone={phone}
+## *Endpoint: http://localhost:8000/signup*
+**Request Format:** signup?username={username}&password={password}&email={email}
 
 **Request Type:** POST
 
@@ -35,15 +36,15 @@ If a user fails to loggin successfully, a helpful message will display saying "u
 
 **Description:** This endpoint is used when a user tries to make a new account on the site. The user will provide a username, password, email, and phone number onto a front end Form to register for an account. The backend server will then check to see that an account with the same email and/or phone number does not already exist. If successful the user will be logged into the site under the new username.
 
-**Example Request:** http://localhost:8000/register?username=janedoe&password=simplepw&email=jan@aol.com&phone=2069731832
+**Example Request:** http://localhost:8000/signup?username=janedoe&password=simplepw&email=jan@aol.com
 
 **Example Response:**
 
 ```
 {
-  success: true,
-  username: janedoe,
   message: Successfully created an account.
+  username: janedoe,
+  cart: []
 }
 ```
 
@@ -106,7 +107,7 @@ Returns an error message if a parameter is invalid or if there are no items that
 the given parameters.
 Ex. "error": "Invalid pricing filter. Valid pricing range is between $1 and $1000 ."
 
-## *Endpoint: http://localhost:8000/sell*
+## *Endpoint: /sell*
 **Request Format:** 
 {
   "title": "Please Enter a Title",
@@ -173,7 +174,7 @@ the required fields then returns the created items details.
 **Error Handling:**
 If the user does not enter in required information an error is returned that tells them to fill in all required fields.
 
-## *Endpoint: http://localhost:8000/buy*
+## *Endpoint: /buy*
 **Request Format:** 
 {
   "item_id": "12345",

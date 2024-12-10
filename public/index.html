@@ -1,10 +1,12 @@
-<!DOCTYPE html>
 <!--
   Names: Andy Prempeh and Javier Tomas
   Date: October 30, 2024
   Section: AF
-  This index.html contains all the basic layout for our e-commerce website.
+  This index.html contains all the basic layout for our clothing website that allows for users to,
+  view, filter, and sort through clothing items. The website is designed to be user-friendly and
+  easy to navigate.
 -->
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -44,104 +46,109 @@
         <div class="dropdown">
           <button class="drop-btn" data-filter="mens-clothing">Men's Clothing</button>
           <div class="dropdown-content">
-            <section><a href="#" id="all-mens" class="mens">All Categories</a></section>
-            <section><a href="" id="tops-mens" class="tops">Tops</a></section>
-            <section><a href="" id="bottoms-mens" class="bottoms">Bottoms</a></section>
-            <section><a href="" id="outer-mens" class="outerwear">Outerwear</a></section>
-            <section><a href="" id="foot-mens" class="footwear">Footwear</a></section>
-            <section><a href="" id="accs-mens" class="accessories">Accessories</a></section>
+            <section><a href="#" id="all-mens" class="all">All Categories</a></section>
+            <section><a href="#" id="tops-mens" class="tops">Tops</a></section>
+            <section><a href="#" id="bottoms-mens" class="bottoms">Bottoms</a></section>
+            <section><a href="#" id="outer-mens" class="outerwear">Outerwear</a></section>
+            <section><a href="#" id="foot-mens" class="footwear">Footwear</a></section>
+            <section><a href="#" id="accs-mens" class="accessories">Accessories</a></section>
             </div>
         </div>
         <div class="dropdown">
           <button class="drop-btn">Women's Clothing</button>
-          <div class="dropdown-content">
-            <section><a href="" id="all-womens">All Categories</a></section>
-            <section><a href="" id="tops-womens">Tops</a></section>
-            <section><a href="" id="bottoms-womens">Bottoms</a></section>
-            <section><a href="" id="outer-womens">Outerwear</a></section>
-            <section><a href="" id="foot-womens">Footwear</a></section>
-            <section><a href="" id="accs-womens">Accessories</a></section>
+          <div class="dropdown-content-w">
+            <section><a href="#" id="all-womens" class="all">All Categories</a></section>
+            <section><a href="#" id="tops-womens" class="tops">Tops</a></section>
+            <section><a href="#" id="bottoms-womens" class="bottoms">Bottoms</a></section>
+            <section><a href="#" id="outer-womens" class="outerwear">Outerwear</a></section>
+            <section><a href="#" id="foot-womens" class="footwear">Footwear</a></section>
+            <section><a href="#" id="accs-womens" class="accessories">Accessories</a></section>
             </div>
         </div>
       </nav>
     </header>
+    <!-- All Images and Item information from: https://www.grailed.com/ -->
     <main>
       <section id="recs">
         <h1>Recommended for you</h1>
-          <section class="mens-recs">
+          <section id="mens-recs">
             <div class="heading">
-              <h3>Shop Mens Recommended</h3>
+              <h3>Shop Mens Recommended</h3>  
             </div>
-            <div class="outerwear">
-              <img src="https://via.placeholder.com/150" alt="product">
-              <hr>
-              <p>Product Name</p>
-              <p>Price</p>
-            </div>
-            <div class="tops">
-              <img src="https://via.placeholder.com/150" alt="product">
-              <hr>
-              <p>Product Name</p>
-              <p>Price</p>
-            </div>
-            <div class="bottoms">
-              <img src="https://via.placeholder.com/150" alt="product">
-              <hr>
-              <p>Product Name</p>
-              <p>Price</p>
-            </div>
-            <div class="footwear">
-              <img src="https://via.placeholder.com/150" alt="product">
-              <hr>
-              <p>Product Name</p>
-              <p>Price</p>
-            </div>
-            <div class="accessories">
-              <img src="https://via.placeholder.com/150" alt="product">
-              <hr>
-              <p>Product Name</p>
-              <p>Price</p>
-            </div>
-          </section>
-          <section class="womens-recs">
+            </section>
+          <section id="womens-recs">
             <div class="heading">
               <h3>Shop Womens Recommended</h3>  
             </div>
-            <div class="outerwear">
-              <img src="https://via.placeholder.com/150" alt="product">
-              <hr>
-              <p>Product Name</p>
-              <p>Price</p>
-            </div>
-            <div class="tops">
-              <img src="https://via.placeholder.com/150" alt="product">
-              <hr>
-              <p>Product Name</p>
-              <p>Price</p>
-            </div>
-            <div class="bottoms">
-              <img src="https://via.placeholder.com/150" alt="product">
-              <hr>
-              <p>Product Name</p>
-              <p>Price</p>
-            </div>
-            <div class="footwear">
-              <img src="https://via.placeholder.com/150" alt="product">
-              <hr>
-              <p>Product Name</p>
-              <p>Price</p>
-            </div>
-            <div class="accessories">
-              <img src="https://via.placeholder.com/150" alt="product">
-              <hr>
-              <p>Product Name</p>
-              <p>Price</p>
-            </div>
+            
           </section>
       </section>
       <!-- Detailed Item View Section -->
       <section id="detailView" class="hidden">
         </section>
+      <!-- Womens -->
+      <section id="womens-clothing" class="all-categories hidden">
+        <h2>
+          Women's Clothing
+        </h2>
+        <div>
+          <h3>Shop Womenswear</h3>
+        </div>
+        <section class="womens-recs">
+        </section>
+        <div class="sort">
+          <select class = "sort-btn">
+            <option value="default">Sort By: Default</option>
+            <option value="tops">Sort By: Price (Low)</option>
+            <option value="bottoms">Sort By: Price (High)</option>
+            <option value="newest">Sort By: Newest</option>
+          </select>
+        </div>
+        <div class="filter-product">
+          <div class="filter">
+            <button class="filter-header" data-filter="categoryFilter" >Category</button>
+            <div class="filter-content hidden" id="categoryFilter">
+              <span>Womenswear</span>
+              <label><input type="checkbox" name="category" value="clothing"> Tops</label>
+              <label><input type="checkbox" name="category" value="accessories"> Bottoms</label>
+              <label><input type="checkbox" name="category" value="outerwear"> Outerwear</label>
+              <label><input type="checkbox" name="category" value="footwear"> Footwear</label>
+              <label><input type="checkbox" name="category" value="accessories"> Accessories</label>
+            </div>
+            <hr>
+            <button class="filter-header" data-filter="sizeFilter" >Size</button>
+            <div class="filter-content hidden" id="sizeFilter">
+              <span>Womenswear</span>
+              <label><input type="checkbox" name="category" value="clothing"> Tops</label>
+              <label><input type="checkbox" name="category" value="accessories"> Bottoms</label>
+              <label><input type="checkbox" name="category" value="outerwear"> Outerwear</label>
+              <label><input type="checkbox" name="category" value="footwear"> Footwear</label>
+              <label><input type="checkbox" name="category" value="accessories"> Accessories</label>
+            </div>
+            <hr>
+            <button class="filter-header" data-filter="priceFilter" >Price</button>
+            <div class="filter-content hidden" id="priceFilter">
+              <form>
+                <input type="number" id="min-price" name="min-price" placeholder="$ Minimum" required>
+                <input type="number" id="max-price" name="max-price" placeholder="$ Maximum" required>
+              </form>
+            </div>
+            <hr>
+            <div class="filter-keyword">
+              <label for="keyword">Filter by Keyword:</label>
+              <div class="keyword">
+                <input type="text" id="keyword" name="keyword" placeholder="Search by keyword">
+              </div>
+            </div>
+          </div>
+        </div>
+        <section class="left">
+          <section id="womensfeed">
+            
+          </section>
+        </section>
+      </section> 
+
       <!-- Mens -->
       <section id="mens-clothing" class="all-categories hidden">
         <h2>
@@ -230,99 +237,9 @@
             </div>
         </section>
         <section class="left">
-          <section id="feed">
+          <section id="mensfeed">
             
           </section>
-        </section>
-      </section>
-      <!-- Womens -->
-      <section id="womens-clothing" class="all-categories hidden">
-        <h2>
-          Women's Clothing
-        </h2>
-        <div>
-          <h3>Shop Womenswear</h3>
-        </div>
-        <section class="womens-recs">
-          <div class="outerwear">
-            <img src="https://via.placeholder.com/150" alt="product">
-            <hr>
-            <p>Product Name</p>
-            <p>Price</p>
-          </div>
-          <div class="tops">
-            <img src="https://via.placeholder.com/150" alt="product">
-            <hr>
-            <p>Product Name</p>
-            <p>Price</p>
-          </div>
-          <div class="bottoms">
-            <img src="https://via.placeholder.com/150" alt="product">
-            <hr>
-            <p>Product Name</p>
-            <p>Price</p>
-          </div>
-          <div class="footwear">
-            <img src="https://via.placeholder.com/150" alt="product">
-            <hr>
-            <p>Product Name</p>
-            <p>Price</p>
-          </div>
-          <div class="accessories">
-            <img src="https://via.placeholder.com/150" alt="product">
-            <hr>
-            <p>Product Name</p>
-            <p>Price</p>
-          </div>
-        </section>
-        <div class="sort">
-          <select class = "sort-btn">
-            <option value="default">Sort By: Default</option>
-            <option value="tops">Sort By: Price (Low)</option>
-            <option value="bottoms">Sort By: Price (High)</option>
-            <option value="newest">Sort By: Newest</option>
-          </select>
-        </div>
-        <div class="filter-product">
-          <div class="filter">
-            <button class="filter-header" data-filter="categoryFilter" >Category</button>
-            <div class="filter-content hidden" id="categoryFilter">
-              <span>Menswear</span>
-              <label><input type="checkbox" name="category" value="clothing"> Tops</label>
-              <label><input type="checkbox" name="category" value="accessories"> Bottoms</label>
-              <label><input type="checkbox" name="category" value="outerwear"> Outerwear</label>
-              <label><input type="checkbox" name="category" value="footwear"> Footwear</label>
-              <label><input type="checkbox" name="category" value="accessories"> Accessories</label>
-            </div>
-            <hr>
-            <button class="filter-header" data-filter="sizeFilter" >Size</button>
-            <div class="filter-content hidden" id="sizeFilter">
-              <span>Menswear</span>
-              <label><input type="checkbox" name="category" value="clothing"> Tops</label>
-              <label><input type="checkbox" name="category" value="accessories"> Bottoms</label>
-              <label><input type="checkbox" name="category" value="outerwear"> Outerwear</label>
-              <label><input type="checkbox" name="category" value="footwear"> Footwear</label>
-              <label><input type="checkbox" name="category" value="accessories"> Accessories</label>
-            </div>
-            <hr>
-            <button class="filter-header" data-filter="priceFilter" >Price</button>
-            <div class="filter-content hidden" id="priceFilter">
-              <form>
-                <input type="number" id="min-price" name="min-price" placeholder="$ Minimum" required>
-                <input type="number" id="max-price" name="max-price" placeholder="$ Maximum" required>
-              </form>
-            </div>
-            <hr>
-            <div class="filter-keyword">
-              <label for="keyword">Filter by Keyword:</label>
-              <div class="keyword">
-                <input type="text" id="keyword" name="keyword" placeholder="Search by keyword">
-              </div>
-            </div>
-          </div>
-        </div>
-        <section class="womenswear">
-          
         </section>
       </section>
 

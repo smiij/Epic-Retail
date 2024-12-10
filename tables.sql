@@ -1,8 +1,10 @@
 CREATE TABLE users (
-  username VARCHAR(64) PRIMARY KEY,
+  id INTEGER,
+  username VARCHAR(64),
   email VARCHAR(64),
   passcode VARCHAR(64),
-  cart TEXT
+  cart TEXT,
+  PRIMARY KEY ("id" AUTOINCREMENT)
 );
 
 CREATE TABLE items (
@@ -14,4 +16,13 @@ CREATE TABLE items (
   type TEXT,
   size TEXT,
   count INT
+  color TEXT
+);
+
+CREATE TABLE orders (
+  id INTEGER,
+  username VARCHAR(64),
+  cart TEXT,
+  PRIMARY KEY ("id" AUTOINCREMENT),
+  FOREIGN KEY (username) REFERENCES users (username)
 );
